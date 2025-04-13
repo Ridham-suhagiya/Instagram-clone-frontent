@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import styles from "./sidebar.module.scss";
 import LogoutIcon from "../../assets/svgs/logout";
+import { set } from "lodash";
 
 interface SidebarLink {
     label: string;
@@ -102,7 +103,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             onMouseLeave={handleMouseLeave}
         >
             <div className={className.sidebar__header}>
-                {displayLogo && (
+                {displayLogo && !collapsed && (
                     <img
                         src={logo}
                         alt="Instagram logo"
