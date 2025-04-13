@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./feeds.module.scss";
 import { fetchUserFeeds, postNewComment, replyToAComment } from "../../helper/fetch";
 import LikeIcon from "../../assets/svgs/like";
@@ -8,6 +8,7 @@ import ImageCarousel from "../../components/imageCorousel/ImageCorousel";
 import CommentsModal from "../../components/commentModel/comment-model";
 import ProfileIcon from "../../assets/svgs/profile";
 import { motion } from "framer-motion";
+import { InstagramProfile, ProfileContext } from "../../context/profile-context";
 
 interface Comment {
     id: string;
@@ -43,7 +44,7 @@ const Feeds: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
     const [newComments, setNewComments] = useState<{ [key: string]: Comment[] }>({});
-
+    const { profile } = useContext(ProfileContext) as { profile: InstagramProfile | null };
     useEffect(() => {
         const loadFeeds = async () => {
             try {
@@ -76,7 +77,7 @@ const Feeds: React.FC = () => {
         const newComment: Comment = {
             id: `comment-${Date.now()}`,
             text,
-            username: "not_t_rhythm",
+            username: profile?.username,
             timestamp: new Date().toISOString(),
         };
 
@@ -151,7 +152,11 @@ const Feeds: React.FC = () => {
                 {feeds.map((feed) => (
                     <div key={feed.id} className={styles.feedCard}>
                         <div className={styles.feedHeader}>
-                            <ProfileIcon />
+                            {profile?.profile_picture_url ? (
+                                <img src={profile?.profile_picture_url} className={styles.userAvatar} />
+                            ) : (
+                                <ProfileIcon />
+                            )}
 
                             <span className={styles.username}>{feed.username}</span>
                             <span className={styles.timestamp}>{new Date(feed.timestamp).toLocaleDateString()}</span>
@@ -184,6 +189,7 @@ const Feeds: React.FC = () => {
 
             <CommentsModal
                 isOpen={!!selectedPostId}
+                profile={profile}
                 onClose={() => setSelectedPostId(null)}
                 comments={selectedPostId ? getCombinedComments(selectedPostId) : []}
                 postId={selectedPostId || ""}

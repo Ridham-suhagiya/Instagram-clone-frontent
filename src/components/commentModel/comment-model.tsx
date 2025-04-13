@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./comment-model.module.scss";
 import ProfileIcon from "../../assets/svgs/profile";
+import { InstagramProfile } from "../../context/profile-context";
 
 interface Comment {
     id: string;
@@ -15,10 +16,11 @@ interface CommentsModalProps {
     onClose: () => void;
     comments: Comment[];
     postId: string;
+    profile: InstagramProfile | null;
     onReply: (postId: string, commentId: string | null, text: string) => void;
 }
 
-const CommentsModal: React.FC<CommentsModalProps> = ({ isOpen, onClose, comments, postId, onReply }) => {
+const CommentsModal: React.FC<CommentsModalProps> = ({ isOpen, onClose, comments, postId, onReply, profile }) => {
     const [replyingTo, setReplyingTo] = useState<string | null>(null);
     const [replyText, setReplyText] = useState("");
     const [newCommentText, setNewCommentText] = useState("");
@@ -75,7 +77,11 @@ const CommentsModal: React.FC<CommentsModalProps> = ({ isOpen, onClose, comments
                                 <div key={comment.id} className={styles.comment}>
                                     <div className={styles.commentHeader}>
                                         <div className={styles.commentAvatar}>
-                                            <ProfileIcon />
+                                            {profile?.profile_picture_url ? (
+                                                <img src={profile?.profile_picture_url} className={styles.userAvatar} />
+                                            ) : (
+                                                <ProfileIcon />
+                                            )}
                                         </div>
                                         <div>
                                             <strong>{comment.username || "Anonymous"}</strong>

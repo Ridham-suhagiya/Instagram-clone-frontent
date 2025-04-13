@@ -1,3 +1,4 @@
+import ProfileContextProvider from "./profile-context";
 import RouterContextProvider from "./route";
 import { ToasterContextProvider } from "./toaster-context";
 
@@ -9,7 +10,9 @@ const AllContext: React.FC<AllContextType> = (props) => {
     const { children } = props;
     return (
         <RouterContextProvider>
-            <ToasterContextProvider>{children}</ToasterContextProvider>
+            <ProfileContextProvider>
+                <ToasterContextProvider>{children}</ToasterContextProvider>
+            </ProfileContextProvider>
         </RouterContextProvider>
     );
 };
