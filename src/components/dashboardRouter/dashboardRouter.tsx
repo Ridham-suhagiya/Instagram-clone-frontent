@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "../../views/dashboard/dashboard";
 import UserProfile from "../../views/profile/profile";
 import { dashboard, feed, login, profile } from "../../constants/variable";
@@ -9,7 +9,6 @@ const ChattinSystem = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Navigate to={`/${dashboard}`} />} />
                 <Route path={`/${login}`} element={<InstagramLogin />} />
                 <Route path={`/${dashboard}`} element={<Dashboard />}>
                     <Route path={`${feed}`} element={<Feeds />} />
