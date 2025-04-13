@@ -1,0 +1,167 @@
+// profile.module.scss
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+$primary: #7b2cbf;
+$primary-light: #9d4edd;
+$secondary: #4361ee;
+$accent: #3a0ca3;
+$text: #f8fafc;
+$text-secondary: #b8b8ff;
+$bg: #050515;
+$bg-secondary: #0d041f;
+$border: #1e293b;
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg, $bg 0%, $bg-secondary 100%);
+    color: $text;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 40%;
+        height: 100%;
+        background: radial-gradient(circle at 70% 50%, rgba($primary, 0.15) 0%, transparent 70%);
+        z-index: 0;
+        pointer-events: none;
+    }
+}
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: $bg;
+
+    .loadingSpinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba($primary, 0.3);
+        border-radius: 50%;
+        border-top-color: $primary;
+    }
+}
+
+.profileSection {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.contentGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @media (min-width: 992px) {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.mainContent {
+    background: rgba($bg-secondary, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba($primary, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.statsSection {
+    position: relative;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    position: sticky;
+    top: 2rem;
+
+    @media (min-width: 992px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.aboutSection {
+    margin-top: 2rem;
+
+    .sectionTitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: $text-secondary;
+        position: relative;
+        padding-bottom: 0.5rem;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, $primary, $secondary);
+            border-radius: 3px;
+        }
+    }
+
+    .bio {
+        color: $text-secondary;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .website {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $text-secondary;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        background: rgba($primary, 0.1);
+        border-radius: 8px;
+        border: 1px solid rgba($primary, 0.3);
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: rgba($primary, 0.2);
+            color: $text;
+            box-shadow: 0 4px 12px rgba($primary, 0.2);
+        }
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .profileSection {
+        padding: 1.5rem;
+    }
+
+    .mainContent {
+        padding: 1.5rem;
+    }
+
+    .aboutSection {
+        .sectionTitle {
+            font-size: 1.3rem;
+        }
+
+        .bio {
+            font-size: 1rem;
+        }
+    }
+}

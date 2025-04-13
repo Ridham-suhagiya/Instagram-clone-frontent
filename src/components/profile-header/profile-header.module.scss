@@ -1,0 +1,124 @@
+$primary: #7b2cbf;
+$primary-light: #9d4edd;
+$secondary: #4361ee;
+$accent: #3a0ca3;
+$text: #f8fafc;
+$text-secondary: #b8b8ff;
+$bg: #050515;
+$bg-secondary: #0d041f;
+$border: #1e293b;
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        text-align: left;
+        gap: 3rem;
+    }
+}
+
+.avatarContainer {
+    position: relative;
+    width: fit-content;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid $primary;
+    box-shadow: 0 0 0 4px rgba($primary, 0.2), 0 10px 25px -5px rgba($primary, 0.4);
+    transition: all 0.3s ease;
+
+    @media (min-width: 768px) {
+        width: 150px;
+        height: 150px;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 0 6px rgba($primary, 0.3), 0 15px 30px -5px rgba($primary, 0.5);
+    }
+}
+
+.badge {
+    position: absolute;
+    bottom: 10px;
+    right: -5px;
+    background: linear-gradient(45deg, $primary, $secondary);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+
+    @media (min-width: 768px) {
+        font-size: 0.8rem;
+        padding: 0.3rem 1rem;
+    }
+}
+
+.details {
+    flex: 1;
+}
+
+.username {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $text;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, $primary, $secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+
+    @media (min-width: 768px) {
+        font-size: 2.5rem;
+    }
+}
+
+.accountType {
+    display: inline-block;
+    background: rgba($primary, 0.15);
+    color: $text-secondary;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: 1px solid rgba($primary, 0.3);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: rgba($primary, 0.25);
+        color: $text;
+        transform: translateY(-2px);
+    }
+}
+
+// Animation styles
+.enterAnimation {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

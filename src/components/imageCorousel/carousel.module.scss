@@ -1,0 +1,42 @@
+.carouselContainer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carouselImage {
+    object-fit: cover;
+    height: 100%;
+}
+
+.leftButton,
+.rightButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0.5rem;
+    border-radius: 9999px;
+}
+
+.leftButton {
+    left: 1rem;
+}
+
+.rightButton {
+    right: 1rem;
+}
+
+.leftButton:hover,
+.rightButton:hover {
+    background: rgba(255, 255, 255, 1);
+}
