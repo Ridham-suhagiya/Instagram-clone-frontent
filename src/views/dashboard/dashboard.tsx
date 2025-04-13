@@ -1,6 +1,6 @@
 // File: Dashboard.tsx
 import React from "react";
-import styles from "./Dashboard.module.scss";
+import styles from "./dashboard.module.scss";
 import Sidebar from "../../components/sidebar/sidebar";
 import { Outlet } from "react-router-dom";
 import { dashbaordSidebar } from "../../constants/component-contants";
