@@ -8,6 +8,7 @@ import PostIcon from "../../assets/svgs/Post";
 import FollowerIcon from "../../assets/svgs/Follower";
 import FollowingIcon from "../../assets/svgs/Following";
 import { getUserId } from "../../session";
+import WebsiteIcon from "../../assets/svgs/Website.tsx";
 
 interface InstagramProfile {
     id: string;
@@ -86,7 +87,7 @@ const UserProfile: React.FC = () => {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                 >
-                                    <span>🌐</span> {profile.website.replace(/^https?:\/\//, "")}
+                                    <WebsiteIcon width="30px" />
                                 </motion.a>
                             )}
                         </motion.div>

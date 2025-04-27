@@ -274,20 +274,22 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, 1fr);
         gap: 2rem;
+        padding: 1rem;
     }
 
     .feedCard {
-        background: rgba(30, 20, 80, 0.3);
-        border: 1px solid rgba(100, 80, 220, 0.2);
-        border-radius: 1rem;
+        background: rgba(30, 20, 80, 0.4); // Increased opacity
+        border: 1px solid rgba(100, 80, 220, 0.25); // More visible border
+        border-radius: 1.2rem; // Increased border radius
         overflow: hidden;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); // Added shadow
 
         &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(40, 20, 120, 0.3);
-            border-color: rgba(120, 100, 230, 0.3);
+            transform: translateY(-8px); // Increased hover effect
+            box-shadow: 0 12px 24px rgba(40, 20, 120, 0.4);
+            border-color: rgba(120, 100, 230, 0.4);
         }
     }
 
